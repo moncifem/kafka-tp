@@ -1,0 +1,41 @@
+## exemple de log
+
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.spark.unsafe.Platform (file:/C:/Users/moncif/.m2/repository/org/apache/spark/spark-unsafe_2.12/3.4.1/spark-unsafe_2.12-3.4.1.jar) to constructor java.nio.DirectByteBuffer(long,int)
+WARNING: Please consider reporting this to the maintainers of org.apache.spark.unsafe.Platform
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Entrez l'adresse postale de l'entreprise (ou 'exit' pour quitter) :
+7 PLACE DU CHAMP COMMUN
+SLF4J: Failed to load class "org.slf4j.impl.StaticMDCBinder".
+SLF4J: Defaulting to no-operation MDCAdapter implementation.
+SLF4J: See http://www.slf4j.org/codes.html#no_static_mdc_binder for further details.
++-----+----------------------------+
+|annee|consommation_annuelle_totale|
++-----+----------------------------+
+| 2018|                     548.506|
+| 2019|                     503.708|
+| 2020|                     484.204|
+| 2021|                     473.992|
+| 2022|                     429.402|
++-----+----------------------------+
+
+Entrez l'adresse postale de l'entreprise (ou 'exit' pour quitter) :
+34 BOULEVARD MARECHAL ALPHONSE JUIN
++-----+----------------------------+
+|annee|consommation_annuelle_totale|
++-----+----------------------------+
+| 2018|                     180.668|
+| 2019|                     155.216|
+| 2020|                     121.088|
+| 2021|          111.84799999999998|
+| 2022|                      24.356|
++-----+----------------------------+
+
+Entrez l'adresse postale de l'entreprise (ou 'exit' pour quitter) :
+exit
+
+Process finished with exit code 0

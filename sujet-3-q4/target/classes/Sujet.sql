@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS sujet (
+     annee INT,
+     code_iris BIGINT,
+     nom_iris VARCHAR(255),
+     numero_de_voie INT,
+     indice_de_repetition VARCHAR(10),
+     type_de_voie VARCHAR(50),
+     libelle_de_voie VARCHAR(255),
+     code_commune BIGINT,
+     nom_commune VARCHAR(255),
+     code_grand_secteur VARCHAR(100),
+     code_categorie_consommation VARCHAR(50),
+     nombre_de_sites INT,
+     consommation_annuelle_totale_de_l_adresse_mwh DECIMAL(10,3),
+     code_secteur_naf2 BIGINT,
+     adresse VARCHAR(255),
+     tri_des_adresses BIGINT,
+     dcp VARCHAR(50),
+     code_epci BIGINT,
+     code_departement INT,
+     code_region INT
+);

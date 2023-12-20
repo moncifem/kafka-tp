@@ -1,0 +1,63 @@
+## Exemple de log du terminal
+
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.spark.unsafe.Platform (file:/C:/Users/moncif/.m2/repository/org/apache/spark/spark-unsafe_2.12/3.4.1/spark-unsafe_2.12-3.4.1.jar) to constructor java.nio.DirectByteBuffer(long,int)
+WARNING: Please consider reporting this to the maintainers of org.apache.spark.unsafe.Platform
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+SLF4J: Failed to load class "org.slf4j.impl.StaticMDCBinder".
+SLF4J: Defaulting to no-operation MDCAdapter implementation.
+SLF4J: See http://www.slf4j.org/codes.html#no_static_mdc_binder for further details.
++-----+-------+----------------------------+
+|annee|adresse|consommation_annuelle_totale|
++-----+-------+----------------------------+
++-----+-------+----------------------------+
+
++-----+-------+----------------------------+
+|annee|adresse|consommation_annuelle_totale|
++-----+-------+----------------------------+
++-----+-------+----------------------------+
+
+22:10:22.070 [main] INFO  com.upec.episen.AppMain - No data found in Q3
++-----+-------+----------------------------+
+|annee|adresse|consommation_annuelle_totale|
++-----+-------+----------------------------+
++-----+-------+----------------------------+
+only showing top 0 rows
+
++-----+-----------------------------------+----------------------------+
+|annee|adresse                            |consommation_annuelle_totale|
++-----+-----------------------------------+----------------------------+
+|2018 |                                   |161.006                     |
+|2019 |                                   |344.576                     |
+|2020 |                                   |406.24                      |
+|2021 |                                   |181.374                     |
+|2022 |                                   |6168812.480000051           |
+|2022 |& - R U E C L A U D E B L O C H    |496.834                     |
+|2022 |' L A B A R R E 3 ' 4 0 L O G T S  |486.086                     |
+|2022 |( A )                              |334.31                      |
+|2022 |( A . I . A . / C . P . )          |17355.422                   |
+|2022 |( A P R E S S U P E R E T T E )    |180.97                      |
+|2022 |( B O I S ) Z O N E I N D U S T R I|559.976                     |
+|2022 |( C L )                            |121.512                     |
+|2022 |( E X - C H A R B O N N A U D )    |116.496                     |
+|2022 |( E X - O P A C )                  |112.758                     |
+|2022 |( EX: MUSEE DU COLLECTIONNEUR )    |126.962                     |
+|2022 |( F O R T M O N T A G E L )        |3748.926                    |
+|2022 |( G E N E R A L E D E S E A U X )  |711.614                     |
+|2022 |( S C E D E S E A U X D E C O R R  |242.244                     |
+|2022 |(ACCUEIL) VAL THORENS              |132.616                     |
+|2022 |(AUDI)                             |255.382                     |
++-----+-----------------------------------+----------------------------+
+only showing top 20 rows
+
++--------+
+|count(1)|
++--------+
++--------+
+only showing top 0 rows
+
+22:11:19.687 [main] INFO  com.upec.episen.AppMain - Count from query: 1020467

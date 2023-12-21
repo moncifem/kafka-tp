@@ -40,6 +40,22 @@
       <artifactId>postgresql</artifactId>
       <version>42.6.0</version>
       </dependency>
+    <dependency>
+      <groupId>org.gephi</groupId>
+      <artifactId>gephi-toolkit</artifactId>
+      <version>0.10.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.gephi</groupId>
+      <artifactId>io-importer-api</artifactId>
+      <version>0.10.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.gephi</groupId>
+      <artifactId>io-exporter-api</artifactId>
+      <version>0.10.1</version>
+    </dependency>
   </dependencies>
 
   <build>

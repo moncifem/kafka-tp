@@ -1,13 +1,12 @@
 package com.upec.episen;
 
 import org.apache.spark.SparkConf;
-import org.apache.spark.sql.Dataset;
-import org.apache.spark.sql.Row;
-import org.apache.spark.sql.SparkSession;
+import org.apache.spark.sql.*;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.Collections;
 
 public class AppMain {
 
@@ -19,24 +18,24 @@ public class AppMain {
         conf.setAppName("sujet");
         conf.setMaster("local[*]");
 
-        // Créez un SparkSession
+        // Create a SparkSession
         SparkSession session = SparkSession.builder().config(conf).getOrCreate();
         session.sparkContext().setLogLevel("INFO");
 
         while (true) {
-            // Récupérez l'adresse postale depuis le terminal
-            System.out.println("Entrez l'adresse postale de l'entreprise (ou 'exit' pour quitter) : ");
+            // Get the postal address from the terminal
+            System.out.println("Enter the postal address of the company (or 'exit' to quit): ");
             java.util.Scanner scanner = new java.util.Scanner(System.in);
-            String adresse = scanner.nextLine();
+            String address = scanner.nextLine();
 
-            if (adresse.equalsIgnoreCase("exit")) {
-                // Quittez la boucle si l'utilisateur entre "exit"
+            if (address.equalsIgnoreCase("exit")) {
+                // Exit the loop if the user enters "exit"
                 break;
             }
 
-            // Utilisez Spark SQL pour exécuter la requête
+            // Use Spark SQL to execute the query
             String query =
-                    String.format("SELECT annee, consommation_annuelle_totale FROM q3 WHERE adresse = '%s'", adresse);
+                    String.format("SELECT annee, adresse, consommation_annuelle_totale FROM q3 WHERE adresse = '%s'", address);
             Dataset<Row> dfQ4 = session.read()
                     .format("jdbc")
                     .option("url", properties.getProperty("database.url"))
@@ -48,11 +47,20 @@ public class AppMain {
             dfQ4.createOrReplaceTempView("q3");
             Dataset<Row> result = session.sql(query);
 
-            // Affichez les résultats dans la console
+            // Show the results in the console
             result.show();
+
+            // Save the results to a single CSV file
+            result
+                    .coalesce(1) // Reduce the number of partitions to 1
+                    .write()
+                    .mode("overwrite") // Specify the overwrite mode
+                    .option("header", "true") // Include the header in the output
+                    .option("delimiter", ";") // Specify the delimiter as a semicolon
+                    .csv("output.csv"); // Specify the output directory
         }
 
-        // Arrêtez la session Spark
+        // Stop the Spark session
         session.stop();
     }
 }

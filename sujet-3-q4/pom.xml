@@ -18,7 +18,20 @@
     <start.class>com.upec.episen.AppMain</start.class>
     <spark.version>3.4.1</spark.version>
   </properties>
+  <repositories>
+    <repository>
+      <id>gephi</id>
+      <url>https://maven.gephi.org/</url>
+    </repository>
 
+    <!-- Add the NetBeans repository -->
+    <repository>
+      <id>netbeans</id>
+      <url>https://bits.netbeans.org/maven2/</url>
+    </repository>
+
+    <!-- Other repositories if required -->
+  </repositories>
   <dependencies>
     <dependency>
       <groupId>org.apache.spark</groupId>
@@ -41,25 +54,15 @@
       <version>42.6.0</version>
       </dependency>
     <dependency>
-      <groupId>org.gephi</groupId>
-      <artifactId>gephi-toolkit</artifactId>
-      <version>0.10.1</version>
+      <groupId>org.jfree</groupId>
+      <artifactId>jfreechart</artifactId>
+      <version>1.5.3</version> <!-- Use the latest version available -->
     </dependency>
 
-    <dependency>
-      <groupId>org.gephi</groupId>
-      <artifactId>io-importer-api</artifactId>
-      <version>0.10.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.gephi</groupId>
-      <artifactId>io-exporter-api</artifactId>
-      <version>0.10.1</version>
-    </dependency>
   </dependencies>
 
   <build>
-    <finalName>yahya-hamza-project</finalName>
+    <finalName>moncif-kebir-project</finalName>
 
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>

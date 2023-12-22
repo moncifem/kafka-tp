@@ -2,11 +2,11 @@ package com.upec.episen;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.sql.*;
+import org.apache.spark.api.java.JavaRDD;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Properties;
-import java.util.Collections;
+import java.util.Scanner;
 
 public class AppMain {
 
@@ -18,24 +18,19 @@ public class AppMain {
         conf.setAppName("sujet");
         conf.setMaster("local[*]");
 
-        // Create a SparkSession
         SparkSession session = SparkSession.builder().config(conf).getOrCreate();
         session.sparkContext().setLogLevel("INFO");
 
         while (true) {
-            // Get the postal address from the terminal
             System.out.println("Enter the postal address of the company (or 'exit' to quit): ");
-            java.util.Scanner scanner = new java.util.Scanner(System.in);
+            Scanner scanner = new Scanner(System.in);
             String address = scanner.nextLine();
 
             if (address.equalsIgnoreCase("exit")) {
-                // Exit the loop if the user enters "exit"
                 break;
             }
 
-            // Use Spark SQL to execute the query
-            String query =
-                    String.format("SELECT annee, adresse, consommation_annuelle_totale FROM q3 WHERE adresse = '%s'", address);
+            String query = String.format("SELECT annee, adresse, consommation_annuelle_totale FROM q3 WHERE adresse = '%s'", address);
             Dataset<Row> dfQ4 = session.read()
                     .format("jdbc")
                     .option("url", properties.getProperty("database.url"))
@@ -47,20 +42,30 @@ public class AppMain {
             dfQ4.createOrReplaceTempView("q3");
             Dataset<Row> result = session.sql(query);
 
-            // Show the results in the console
             result.show();
 
-            // Save the results to a single CSV file
-            result
-                    .coalesce(1) // Reduce the number of partitions to 1
+            result.coalesce(1)
                     .write()
-                    .mode("overwrite") // Specify the overwrite mode
-                    .option("header", "true") // Include the header in the output
-                    .option("delimiter", ";") // Specify the delimiter as a semicolon
-                    .csv("output.csv"); // Specify the output directory
+                    .mode("overwrite")
+                    .option("header", "true")
+                    .option("delimiter", ";")
+                    .csv("output");
+            dfQ4.printSchema();
+            FilenameFilter csvFilter = new FilenameFilter() {
+                @Override
+                public boolean accept(File dir, String name) {
+                    return name.toLowerCase().endsWith(".csv");
+                }
+            };
+            File dir = new File("output");
+            File[] csvFiles = dir.listFiles(csvFilter);
+            String csvFileName = csvFiles[0].getName();
+            System.out.println("CSV file: " + csvFileName);
+            ChartHelper.createChartFromCSV(csvFileName);
         }
 
-        // Stop the Spark session
         session.stop();
     }
+
+
 }
